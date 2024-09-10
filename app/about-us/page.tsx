@@ -13,7 +13,7 @@ export default function AboutUs() {
           <div className="flex items-center space-x-2">
             <Image 
               src="/virtual-try-logo.png" 
-              alt="Virtual Try Logo" 
+              alt="Virtual-Try-Logo" 
               width={40} 
               height={40}
             />
