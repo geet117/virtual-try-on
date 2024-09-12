@@ -53,7 +53,7 @@ export function VirtualTryPage() {
       </header>
       
       <main className="container mx-auto px-4 py-12">
-        <section className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl shadow-xl p-8 mb-12">
+        <section className="bg-gradient-to-r from-purple-700 to-indigo-800 rounded-xl shadow-xl p-8 mb-12">
           <div className="max-w-3xl mx-auto text-center text-white">
             <h2 className="text-4xl font-bold mb-4">Experience Fashion Like Never Before</h2>
             <p className="text-xl mb-4">

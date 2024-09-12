@@ -38,7 +38,7 @@ export function LandingPage() {
       </header>
 
       <main>
-        <section className="bg-purple-700 text-white py-20">
+        <section className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white py-20 px-4 sm:px-6 lg:px-8">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl font-bold mb-6">Transform Your E-Commerce with Virtual Try-Ons</h1>
             <p className="text-3xl font-bold mb-8">CLICK. TRY. BUY.</p>
