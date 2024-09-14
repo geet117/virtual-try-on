@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import Header from './Header'
+import { ComponentsHeader } from './components-header'
+import { ComponentsFooter } from './components-footer'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -10,11 +11,11 @@ interface LayoutProps {
 export function ComponentsLayout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <ComponentsHeader />
       <main className="flex-grow pt-16">
         {children}
       </main>
-      {/* Footer can be added here if needed */}
+      <ComponentsFooter />
     </div>
   )
 }

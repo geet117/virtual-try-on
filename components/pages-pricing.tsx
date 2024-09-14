@@ -1,14 +1,15 @@
 'use client'
+'use client'
 
 import React from 'react'
-import Header from './components-header'
-import Footer from './components-footer'
-import Pricing from './components-pricing'
+import { ComponentsHeader } from './components-header'
+import { ComponentsFooter } from './components-footer'
+import { ComponentsPricing } from './components-pricing'
 
 export function PagesPricing() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <ComponentsHeader />
       
       <main className="flex-grow">
         {/* Hero Section */}
@@ -20,12 +21,11 @@ export function PagesPricing() {
             </p>
           </div>
         </section>
-
         {/* Pricing Component */}
-        <Pricing onSubscribe={(plan) => console.log(`Subscribed to ${plan}`)} />
+        <ComponentsPricing onSubscribe={(plan: string) => console.log(`Subscribed to ${plan}`)} />
       </main>
 
-      <Footer />
+      <ComponentsFooter />
     </div>
   )
 }

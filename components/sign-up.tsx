@@ -1,35 +1,41 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
-import { FaGoogle, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
-import { createClient } from '@supabase/supabase-js'
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import {
+  FaGoogle,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
+import { createClient } from "@supabase/supabase-js";
 
 // Initialize Supabase client
-const supabase = createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY')
+const supabase = createClient("YOUR_SUPABASE_URL", "YOUR_SUPABASE_ANON_KEY");
 
 export function SignUp() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  })
-  const [error, setError] = useState('')
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setError('')
+    e.preventDefault();
+    setError("");
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match')
-      return
+      setError("Passwords do not match");
+      return;
     }
 
     try {
@@ -38,18 +44,18 @@ export function SignUp() {
         password: formData.password,
         options: {
           data: {
-            username: formData.username
-          }
-        }
-      })
+            username: formData.username,
+          },
+        },
+      });
 
-      if (error) throw error
+      if (error) throw error;
 
-      alert('Sign up successful! Please check your email for verification.')
+      alert("Sign up successful! Please check your email for verification.");
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 font-sans flex flex-col">
@@ -57,40 +63,57 @@ export function SignUp() {
       <header className="bg-white shadow-md fixed top-0 left-0 right-0 z-10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Image 
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/virtual-try-logo%20-ahJEZkMuCS7Mja3P7EXWFzZBZtImNV.png" 
-              alt="Virtual Try Logo" 
-              width={40} 
+            <Image
+              src="/public/virtual-try-logo.png"
+              alt="Virtual Try Logo"
+              width={40}
               height={40}
             />
-            <span className="text-2xl font-bold text-purple-600 font-montserrat">Virtual Try</span>
+            <span className="text-2xl font-bold text-purple-600 font-montserrat">
+              Virtual Try
+            </span>
           </div>
           <nav>
             <ul className="flex space-x-6 items-center">
               <li>
-                <Link href="/features" className="text-gray-600 hover:text-gray-800 transition-colors text-lg">
+                <Link
+                  href="/features"
+                  className="text-gray-600 hover:text-gray-800 transition-colors text-lg"
+                >
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-600 hover:text-gray-800 transition-colors text-lg">
+                <Link
+                  href="/about"
+                  className="text-gray-600 hover:text-gray-800 transition-colors text-lg"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-600 hover:text-gray-800 transition-colors text-lg">
+                <Link
+                  href="/contact"
+                  className="text-gray-600 hover:text-gray-800 transition-colors text-lg"
+                >
                   Contact Us
                 </Link>
               </li>
               {!isLoggedIn && (
                 <>
                   <li>
-                    <Link href="/signup" className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-lg">
+                    <Link
+                      href="/signup"
+                      className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-lg"
+                    >
                       Sign Up
                     </Link>
                   </li>
                   <li>
-                    <Link href="/login" className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-lg">
+                    <Link
+                      href="/login"
+                      className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-lg"
+                    >
                       Login
                     </Link>
                   </li>
@@ -126,55 +149,63 @@ export function SignUp() {
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm space-y-4">
               <div>
-                <label htmlFor="username" className="sr-only">Username</label>
-                <input 
-                  id="username" 
-                  name="username" 
-                  type="text" 
-                  required 
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                <label htmlFor="username" className="sr-only">
+                  Username
+                </label>
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  required
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Username"
                   value={formData.username}
                   onChange={handleInputChange}
                 />
               </div>
               <div>
-                <label htmlFor="email-address" className="sr-only">Email address</label>
-                <input 
-                  id="email-address" 
-                  name="email" 
-                  type="email" 
-                  autoComplete="email" 
-                  required 
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                <label htmlFor="email-address" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
                   value={formData.email}
                   onChange={handleInputChange}
                 />
               </div>
               <div>
-                <label htmlFor="password" className="sr-only">Password</label>
-                <input 
-                  id="password" 
-                  name="password" 
-                  type="password" 
-                  autoComplete="new-password" 
-                  required 
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
                   value={formData.password}
                   onChange={handleInputChange}
                 />
               </div>
               <div>
-                <label htmlFor="confirm-password" className="sr-only">Confirm Password</label>
-                <input 
-                  id="confirm-password" 
-                  name="confirmPassword" 
-                  type="password" 
-                  autoComplete="new-password" 
-                  required 
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                <label htmlFor="confirm-password" className="sr-only">
+                  Confirm Password
+                </label>
+                <input
+                  id="confirm-password"
+                  name="confirmPassword"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Confirm password"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
@@ -184,8 +215,16 @@ export function SignUp() {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                <input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                />
+                <label
+                  htmlFor="remember-me"
+                  className="ml-2 block text-sm text-gray-900"
+                >
                   I'm not a robot
                 </label>
               </div>
@@ -194,7 +233,10 @@ export function SignUp() {
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
             <div>
-              <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-lg rounded-md text-white bg-gradient-to-r from-purple-700 to-indigo-800 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <button
+                type="submit"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-lg rounded-md text-white bg-gradient-to-r from-purple-700 to-indigo-800 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
                 Create an account
               </button>
             </div>
@@ -203,14 +245,30 @@ export function SignUp() {
             <p className="font-medium text-gray-600">
               Already have an account?
             </p>
-            <Link href="/login" className="inline-block mt-2 bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-lg">
+            <Link
+              href="/login"
+              className="inline-block mt-2 bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-lg"
+            >
               Login
             </Link>
           </div>
           <div className="text-xs text-center text-gray-500">
             By signing up, you agree with Virtual Try's
-            <Link href="/terms" className="text-indigo-600 hover:text-indigo-500"> terms of service</Link> &
-            <Link href="/privacy" className="text-indigo-600 hover:text-indigo-500"> privacy policy</Link>
+            <Link
+              href="/terms"
+              className="text-indigo-600 hover:text-indigo-500"
+            >
+              {" "}
+              terms of service
+            </Link>{" "}
+            &
+            <Link
+              href="/privacy"
+              className="text-indigo-600 hover:text-indigo-500"
+            >
+              {" "}
+              privacy policy
+            </Link>
           </div>
         </div>
       </div>
@@ -221,39 +279,51 @@ export function SignUp() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {['Home', 'About', 'Features', 'Pricing', 'Contact'].map((item, index) => (
-                <li key={index}>
-                  <Link href="#" className="hover:text-gray-300 transition duration-300">
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              {["Home", "About", "Features", "Pricing", "Contact"].map(
+                (item, index) => (
+                  <li key={index}>
+                    <Link
+                      href="#"
+                      className="hover:text-gray-300 transition duration-300"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
-              {['Terms of Service', 'Privacy Policy', 'Cookie Policy'].map((item, index) => (
-                <li key={index}>
-                  <Link href="#" className="hover:text-gray-300 transition duration-300">
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              {["Terms of Service", "Privacy Policy", "Cookie Policy"].map(
+                (item, index) => (
+                  <li key={index}>
+                    <Link
+                      href="#"
+                      className="hover:text-gray-300 transition duration-300"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
             <div className="flex space-x-4">
-              {[FaFacebook, FaTwitter, FaInstagram, FaLinkedin].map((Icon, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="text-white hover:text-gray-300 transition duration-300"
-                >
-                  <Icon className="w-6 h-6" />
-                </a>
-              ))}
+              {[FaFacebook, FaTwitter, FaInstagram, FaLinkedin].map(
+                (Icon, index) => (
+                  <a
+                    key={index}
+                    href="#"
+                    className="text-white hover:text-gray-300 transition duration-300"
+                  >
+                    <Icon className="w-6 h-6" />
+                  </a>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -262,5 +332,5 @@ export function SignUp() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
