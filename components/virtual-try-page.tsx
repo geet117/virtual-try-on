@@ -18,6 +18,7 @@ import Link from "next/link";
 export function VirtualTryPage() {
   const [userPhoto, setUserPhoto] = useState<string | null>(null);
   const [garmentPhoto, setGarmentPhoto] = useState<string | null>(null);
+  const [resultPhoto, setResultPhoto] = useState<string | null>(null);
 
   const handleFileUpload = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -30,6 +31,39 @@ export function VirtualTryPage() {
         setPhoto(reader.result as string);
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const handleTryOn = async () => {
+    if (!userPhoto || !garmentPhoto) {
+      alert("Please upload both a user photo and a garment photo");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/virtual-try", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userPhoto: userPhoto,
+          garmentPhoto: garmentPhoto,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(
+          `HTTP error! status: ${response.status}, message: ${errorText}`
+        );
+      }
+
+      const data = await response.json();
+      setResultPhoto(data.result);
+    } catch (error) {
+      console.error("Error:", error);
+      alert(`An error occurred: ${error.message}`);
     }
   };
 
@@ -125,15 +159,26 @@ export function VirtualTryPage() {
           </div>
 
           <div className="flex justify-center mb-8">
-            <Button className="bg-purple-600 text-white hover:bg-purple-700 text-lg px-8 py-3">
+            <Button
+              className="bg-purple-600 text-white hover:bg-purple-700 text-lg px-8 py-3"
+              onClick={handleTryOn}
+            >
               Try On
             </Button>
           </div>
 
           <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center">
-            <p className="text-gray-500 text-lg">
-              Your virtual try-on will appear here
-            </p>
+            {resultPhoto ? (
+              <img
+                src={resultPhoto}
+                alt="Virtual try-on result"
+                className="w-full h-full object-contain"
+              />
+            ) : (
+              <p className="text-gray-500 text-lg">
+                Your virtual try-on will appear here
+              </p>
+            )}
           </div>
         </div>
 
