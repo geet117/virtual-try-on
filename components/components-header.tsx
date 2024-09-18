@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import { Session } from "@supabase/supabase-js";
+import { Button } from "./ui/button";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -60,87 +61,60 @@ export function ComponentsHeader() {
     setShowLogoutConfirmation(false);
   };
 
+  const gradientButtonClasses =
+    "bg-gradient-to-r from-purple-600 to-indigo-600 to-blue-600 hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300";
+
   return (
     <>
       <header className="bg-white shadow-md fixed top-0 left-0 right-0 z-10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Image
-              src="/public/virtual-try-logo.png"
+              src="/virtual-try-logo.png" // Update this path to match your logo file location
               alt="Virtual Try Logo"
               width={40}
               height={40}
+              priority
             />
             <span className="text-2xl font-bold text-purple-600 font-montserrat">
-              Virtual Try
+              Virtual Try-On
             </span>
           </div>
-          <nav>
-            <ul className="flex space-x-6 items-center">
-              <li>
-                <Link
-                  href="/features"
-                  className="text-gray-600 hover:text-gray-800 transition-colors text-base"
-                >
-                  Features
+          <nav className="flex items-center space-x-4">
+            <Link
+              href="/features"
+              className="text-gray-600 hover:text-gray-900"
+            >
+              Features
+            </Link>
+            <Link href="/about" className="text-gray-600 hover:text-gray-900">
+              About Us
+            </Link>
+            <Link href="/contact" className="text-gray-600 hover:text-gray-900">
+              Contact Us
+            </Link>
+            {isLoggedIn ? (
+              <>
+                <Link href="/my-account">
+                  <Button className={gradientButtonClasses}>My Account</Button>
                 </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-gray-600 hover:text-gray-800 transition-colors text-base"
+                <Button
+                  className={gradientButtonClasses}
+                  onClick={handleLogout}
                 >
-                  About Us
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link href="/login">
+                  <Button className={gradientButtonClasses}>Login</Button>
                 </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-600 hover:text-gray-800 transition-colors text-base"
-                >
-                  Contact Us
+                <Link href="/signup">
+                  <Button className={gradientButtonClasses}>Sign Up</Button>
                 </Link>
-              </li>
-              {isLoggedIn ? (
-                <>
-                  <li>
-                    <Link
-                      href="/my-account"
-                      className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-base"
-                    >
-                      My Account
-                    </Link>
-                  </li>
-                  <li>
-                    <button
-                      onClick={handleLogoutClick}
-                      className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-base"
-                    >
-                      Logout
-                    </button>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li>
-                    <Link
-                      href="/signup"
-                      className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-base"
-                    >
-                      Sign Up
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/login"
-                      className="bg-gradient-to-r from-purple-700 to-indigo-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-base"
-                    >
-                      Login
-                    </Link>
-                  </li>
-                </>
-              )}
-            </ul>
+              </>
+            )}
           </nav>
         </div>
       </header>
