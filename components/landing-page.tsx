@@ -45,9 +45,13 @@ export function LandingPage() {
         </section>
 
         <div className="bg-gradient-to-b from-indigo-100 via-purple-100 to-pink-100 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900">
-          <section id="features" className="py-20">
+          <section id="features" className="py-12">
+            {" "}
+            {/* Changed from py-20 to py-12 */}
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl font-bold text-center mb-12 text-indigo-800 dark:text-indigo-200">
+              <h2 className="text-3xl font-bold text-center mb-8">
+                {" "}
+                {/* Changed mb-12 to mb-8 */}
                 Why Use Virtual Try?
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
