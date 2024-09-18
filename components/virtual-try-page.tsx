@@ -69,8 +69,8 @@ export function VirtualTryPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <main className="container mx-auto px-4 py-12">
-        <section className="bg-gradient-to-r from-purple-700 to-indigo-800 rounded-xl shadow-xl p-8 mb-12">
+      <main>
+        <section className="bg-gradient-to-r from-purple-700 to-indigo-800 py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center text-white">
             <h2 className="text-4xl font-bold mb-4">
               Experience Fashion Like Never Before
@@ -87,11 +87,11 @@ export function VirtualTryPage() {
         </section>
 
         <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <div>
+          <div className="flex justify-center gap-12 mb-8">
+            <div className="w-[256px] flex flex-col">
               <Label
                 htmlFor="user-photo"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-2 text-center"
               >
                 Upload Your Photo
               </Label>
@@ -100,14 +100,14 @@ export function VirtualTryPage() {
                 type="file"
                 accept="image/*"
                 onChange={(e) => handleFileUpload(e, setUserPhoto)}
-                className="block w-full text-sm text-gray-500
-                  file:mr-4 file:py-2 file:px-4
+                className="block w-full text-sm text-gray-500 mb-4
+                  file:mr-2 file:py-1 file:px-2
                   file:rounded-full file:border-0
-                  file:text-sm file:font-semibold
-                  file:bg-purple-50 file:text-purple-700
-                  hover:file:bg-purple-100"
+                  file:text-xs file:font-semibold
+                  file:bg-purple-600 file:text-white
+                  hover:file:bg-purple-700"
               />
-              <div className="mt-4 rounded-lg overflow-hidden aspect-square bg-gray-200 flex flex-col items-center justify-center">
+              <div className="rounded-lg overflow-hidden w-[256px] h-[320px] bg-gray-200 flex flex-col items-center justify-center">
                 {userPhoto ? (
                   <img
                     src={userPhoto}
@@ -122,10 +122,11 @@ export function VirtualTryPage() {
                 )}
               </div>
             </div>
-            <div>
+
+            <div className="w-[256px] flex flex-col">
               <Label
                 htmlFor="garment-photo"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-gray-700 mb-2 text-center"
               >
                 Upload the Garment
               </Label>
@@ -134,14 +135,14 @@ export function VirtualTryPage() {
                 type="file"
                 accept="image/*"
                 onChange={(e) => handleFileUpload(e, setGarmentPhoto)}
-                className="block w-full text-sm text-gray-500
-                  file:mr-4 file:py-2 file:px-4
+                className="block w-full text-sm text-gray-500 mb-4
+                  file:mr-2 file:py-1 file:px-2
                   file:rounded-full file:border-0
-                  file:text-sm file:font-semibold
-                  file:bg-purple-50 file:text-purple-700
-                  hover:file:bg-purple-100"
+                  file:text-xs file:font-semibold
+                  file:bg-purple-600 file:text-white
+                  hover:file:bg-purple-700"
               />
-              <div className="mt-4 rounded-lg overflow-hidden aspect-square bg-gray-200 flex flex-col items-center justify-center">
+              <div className="rounded-lg overflow-hidden w-[256px] h-[320px] bg-gray-200 flex flex-col items-center justify-center">
                 {garmentPhoto ? (
                   <img
                     src={garmentPhoto}
@@ -156,9 +157,33 @@ export function VirtualTryPage() {
                 )}
               </div>
             </div>
+
+            <div className="w-[256px] flex flex-col">
+              <Label className="block text-sm font-medium text-gray-700 mb-2 text-center">
+                Your Garment Preview
+              </Label>
+              <div className="h-[38px] mb-4 flex items-center justify-center bg-white border border-gray-300 rounded-md shadow-sm px-3">
+                <span className="text-sm font-medium text-gray-700">
+                  Your New Look
+                </span>
+              </div>
+              <div className="rounded-lg overflow-hidden w-[256px] h-[320px] bg-gray-200 flex flex-col items-center justify-center">
+                {resultPhoto ? (
+                  <img
+                    src={resultPhoto}
+                    alt="Virtual try-on result"
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <p className="text-gray-500 text-lg text-center px-4">
+                    Your virtual try-on will appear here
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
 
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mt-8">
             <Button
               className="bg-purple-600 text-white hover:bg-purple-700 text-lg px-8 py-3"
               onClick={handleTryOn}
@@ -166,30 +191,16 @@ export function VirtualTryPage() {
               Try On
             </Button>
           </div>
-
-          <div className="bg-gray-200 rounded-lg aspect-video flex items-center justify-center">
-            {resultPhoto ? (
-              <img
-                src={resultPhoto}
-                alt="Virtual try-on result"
-                className="w-full h-full object-contain"
-              />
-            ) : (
-              <p className="text-gray-500 text-lg">
-                Your virtual try-on will appear here
-              </p>
-            )}
-          </div>
         </div>
 
         <section className="bg-white rounded-xl shadow-lg p-8 mb-12">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
             Frequently Asked Questions
           </h2>
           <Accordion
             type="single"
             collapsible
-            className="w-full max-w-3xl mx-auto"
+            className="w-full max-w-3xl text-gray-700 mx-auto"
           >
             <AccordionItem value="item-1">
               <AccordionTrigger>How does Virtual Try work?</AccordionTrigger>
