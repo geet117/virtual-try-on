@@ -11,7 +11,7 @@ import { useState } from "react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "600"],
 });
 
 export function LandingPage() {
@@ -24,7 +24,7 @@ export function LandingPage() {
 
   return (
     <div className={`flex flex-col min-h-screen ${montserrat.className}`}>
-      <main>
+      <main className={montserrat.className}>
         <section className="bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-500 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-blue-400 via-indigo-600 to-purple-600 opacity-30"></div>
           <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
@@ -46,13 +46,10 @@ export function LandingPage() {
 
         <div className="bg-gradient-to-b from-indigo-100 via-purple-100 to-pink-100 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900">
           <section id="features" className="py-12">
-            {" "}
-            {/* Changed from py-20 to py-12 */}
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold text-center mb-8">
                 {" "}
-                {/* Changed mb-12 to mb-8 */}
-                Why Use Virtual Try-O?
+                Why Use Virtual Try-On?
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
