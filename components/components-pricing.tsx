@@ -1,33 +1,49 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Check } from 'lucide-react'
+import { useState } from "react";
+import { Check } from "lucide-react";
 
 const plans = [
   {
-    name: 'Basic Plan',
+    name: "Basic Plan",
     price: 9.99,
-    features: ['100 Virtual Try-ons', 'Basic Analytics', 'Email Support'],
+    features: ["10 Virtual Try-ons", "Basic Analytics", "Email Support"],
   },
   {
-    name: 'Standard Plan',
+    name: "Standard Plan",
     price: 19.99,
-    features: ['500 Virtual Try-ons', 'Advanced Analytics', 'Priority Email Support', 'Custom Branding'],
+    features: [
+      "25 Virtual Try-ons",
+      "Advanced Analytics",
+      "Priority Email Support",
+      "Custom Branding",
+    ],
   },
   {
-    name: 'Premium Plan',
-    price: 39.99,
-    features: ['Unlimited Virtual Try-ons', 'Real-time Analytics', '24/7 Phone Support', 'API Access', 'Custom Integration'],
+    name: "Premium Plan",
+    price: 49.99,
+    features: [
+      "60 Virtual Try-ons",
+      "Real-time Analytics",
+      "24/7 Phone Support",
+      "API Access",
+      "Custom Integration",
+    ],
   },
   {
-    name: 'Enterprise Plan',
+    name: "Enterprise Plan",
     price: 99.99,
-    features: ['Everything in Premium', 'Dedicated Account Manager', 'Custom Feature Development', 'On-site Training'],
+    features: [
+      "Everything in Premium",
+      "Dedicated Account Manager",
+      "Custom Feature Development",
+      "On-site Training",
+    ],
   },
-]
+];
 
 export function ComponentsPricing({ onSubscribe }) {
-  const [selectedPlan, setSelectedPlan] = useState(null)
+  const [selectedPlan, setSelectedPlan] = useState(null);
 
   return (
     <div className="py-12 bg-gray-100">
@@ -46,24 +62,32 @@ export function ComponentsPricing({ onSubscribe }) {
             <div
               key={plan.name}
               className={`border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 ${
-                selectedPlan === plan.name ? 'ring-2 ring-indigo-500' : ''
+                selectedPlan === plan.name ? "ring-2 ring-indigo-500" : ""
               }`}
             >
               <div className="p-6">
-                <h3 className="text-lg font-medium text-gray-900">{plan.name}</h3>
+                <h3 className="text-lg font-medium text-gray-900">
+                  {plan.name}
+                </h3>
                 <p className="mt-4 text-sm text-gray-500">{plan.features[0]}</p>
                 <p className="mt-8">
-                  <span className="text-4xl font-extrabold text-gray-900">${plan.price}</span>
-                  <span className="text-base font-medium text-gray-500">/mo</span>
+                  <span className="text-4xl font-extrabold text-gray-900">
+                    ${plan.price}
+                  </span>
+                  <span className="text-base font-medium text-gray-500">
+                    /mo
+                  </span>
                 </p>
                 <button
                   onClick={() => setSelectedPlan(plan.name)}
                   className={`mt-8 block w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-md py-2 text-sm font-semibold hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
-                    selectedPlan === plan.name ? 'opacity-75 cursor-not-allowed' : ''
+                    selectedPlan === plan.name
+                      ? "opacity-75 cursor-not-allowed"
+                      : ""
                   }`}
                   disabled={selectedPlan === plan.name}
                 >
-                  {selectedPlan === plan.name ? 'Selected' : 'Select Plan'}
+                  {selectedPlan === plan.name ? "Selected" : "Select Plan"}
                 </button>
               </div>
               <div className="pt-6 pb-8 px-6">
@@ -73,7 +97,10 @@ export function ComponentsPricing({ onSubscribe }) {
                 <ul className="mt-6 space-y-4">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex space-x-3">
-                      <Check className="flex-shrink-0 h-5 w-5 text-green-500" aria-hidden="true" />
+                      <Check
+                        className="flex-shrink-0 h-5 w-5 text-green-500"
+                        aria-hidden="true"
+                      />
                       <span className="text-sm text-gray-500">{feature}</span>
                     </li>
                   ))}
@@ -95,5 +122,5 @@ export function ComponentsPricing({ onSubscribe }) {
         )}
       </div>
     </div>
-  )
+  );
 }

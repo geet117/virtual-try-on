@@ -180,8 +180,10 @@ export function Vto() {
 
       <main className={montserrat.className}>
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-500 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto text-center">
+        <section className="bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-500 text-white py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            {" "}
+            {/* Adjust max-w here */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4">
               CLICK. TRY. BUY.
             </h1>
@@ -196,7 +198,7 @@ export function Vto() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white bg-opacity-50 backdrop-blur-lg rounded-xl p-4 shadow-lg w-3/4 mx-auto">
-                <h2 className="text-purple-800 text-xl font-light mb-4">
+                <h2 className="text-purple-800 text-xl font-light mb-4 justify-centre">
                   Upload Your Photo
                 </h2>
                 <div className="flex flex-col items-center justify-center h-80 w-full mx-auto">

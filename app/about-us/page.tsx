@@ -4,7 +4,7 @@ import { Montserrat } from "next/font/google";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function AboutUs() {
-  const teamMembers = ["Geetha", "Akhil", "Devandra", "Rammiit"];
+  const teamMembers = ["Geetha", "Akhil", "Devandra"];
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -13,7 +13,7 @@ export default function AboutUs() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-500 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white-800">
             We're on a mission to elevate online shopping with augmented
             reality.
           </h2>
@@ -30,12 +30,12 @@ export default function AboutUs() {
       {/* About Section */}
       <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-center mb-12 text-indigo-800 dark:text-indigo-200">
             Our Story
           </h2>
           <p className="text-lg text-gray-600 mb-6">
-            Founded in 2023, Virtual Try emerged from a simple idea: what if you
-            could try on clothes without leaving your home? Our team of
+            Founded in 2024, Virtual TryOn emerged from a simple idea: what if
+            you could try on clothes without leaving your home? Our team of
             passionate developers and fashion enthusiasts came together to
             create a solution that bridges the gap between online shopping and
             the in-store experience.
@@ -54,29 +54,31 @@ export default function AboutUs() {
       {/* Skills Section */}
       <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-center mb-12 text-indigo-800 dark:text-indigo-200">
             Our Expertise
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-              <h3 className="text-xl font-semibold mb-4">Augmented Reality</h3>
+              <h3 className="text-xl font-semibold text-indigo-800 dark:text-indigo-200 mb-4">
+                Augmented Reality
+              </h3>
               <p className="text-gray-600">
                 Cutting-edge AR technology for realistic virtual try-ons
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 text-indigo-800 dark:text-indigo-200  ">
               <h3 className="text-xl font-semibold mb-4">Machine Learning</h3>
               <p className="text-gray-600">
                 Advanced algorithms for accurate size and fit recommendations
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 text-indigo-800 dark:text-indigo-200">
               <h3 className="text-xl font-semibold mb-4">3D Modeling</h3>
               <p className="text-gray-600">
                 High-fidelity 3D models of clothing and accessories
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 text-indigo-800 dark:text-indigo-200">
               <h3 className="text-xl font-semibold mb-4">UX Design</h3>
               <p className="text-gray-600">
                 Intuitive and seamless user experiences across devices
@@ -89,10 +91,10 @@ export default function AboutUs() {
       {/* Team Section */}
       <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-center mb-12 text-indigo-800 dark:text-indigo-200">
             Meet Our Team
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+          <div className="grid grid-cols-3 sm:grid-cols-3 gap-8">
             {teamMembers.map((name, index) => (
               <div key={index} className="text-center">
                 <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl sm:text-3xl font-bold">
