@@ -47,7 +47,7 @@ export function LandingPage() {
         <div className="bg-gradient-to-b from-indigo-100 via-purple-100 to-pink-100 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900">
           <section id="features" className="py-12">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl font-bold text-center mb-8">
+              <h2 className="text-3xl font-bold text-center mb-12 text-indigo-800 dark:text-indigo-200">
                 {" "}
                 Why Use Virtual Try-On?
               </h2>
