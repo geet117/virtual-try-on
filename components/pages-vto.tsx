@@ -180,22 +180,65 @@ export function Vto() {
 
       <main className={montserrat.className}>
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-500 text-white py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="py-20 bg-gradient-to-b from-gray-200 to-blue-200 relative flex items-center">
+          {" "}
+          {/* Light gradient from gray to light blue */}
+          <div className="absolute inset-0 bg-white opacity-80"></div>{" "}
+          {/* Overlay for text visibility */}
+          <div className="container mx-auto flex flex-row items-center relative z-10">
             {" "}
-            {/* Adjust max-w here */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4">
-              CLICK. TRY. BUY.
-            </h1>
-            <p className="text-xl sm:text-2xl mb-8 font-light">
-              Drive sales and lower returns with Virtual Try-On.
-            </p>
+            {/* Flex row for side-by-side layout */}
+            <div className="flex flex-col items-start justify-center w-1/2 p-4">
+              {" "}
+              {/* Text container */}
+              <h1
+                className={`text-4xl sm:text-5xl font-medium mb-2 ${montserrat.className} text-3xl font-bold mb-12 text-indigo-800 dark:text-indigo-200`}
+              >
+                {" "}
+                {/* Changed to a soft cream color */}
+                CLICK. TRY. BUY.
+              </h1>
+              <p
+                className={`text-3xl mb-4 font-medium ${montserrat.className} text-indigo-800 dark:text-indigo`}
+              >
+                {" "}
+                {/* Changed to a lighter cream color */}
+                Enhance Customer Exeperience, Increase Sales
+              </p>
+              {/* 
+              <button
+                onClick={playVideo} // Ensure playVideo is defined if uncommented
+                className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm text-white border border-white border-opacity-30 hover:bg-opacity-30 text-lg px-8 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                {isPlaying ? "Watch Again" : "See What's New"}
+              </button>
+              */}
+            </div>
+            <div className="w-1/2 flex justify-center">
+              {" "}
+              {/* Image container */}
+              <Image
+                src="/hero-banner-1.png" // Ensure this image is in the public folder
+                alt="Hero Banner 1"
+                width={600} // Set width to 600
+                height={450} // Set height to 450
+                className="rounded-lg object-contain" // Ensure the entire image is visible
+              />
+            </div>
           </div>
         </section>
 
         {/* Image Upload Section */}
-        <section className="bg-gradient-to-b from-indigo-100 via-purple-100 to-pink-100 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <section className="py-20 bg-gradient-to-b from-blue-100 to-purple-200">
+          {" "}
+          {/* Very light gradient from blue to light purple */}
+          <div className="container mx-auto">
+            <h2
+              className={`text-3xl font-bold text-center mb-12 text-indigo-800 dark:text-indigo-200`}
+            >
+              Let's Try It
+            </h2>{" "}
+            {/* Updated section heading */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white bg-opacity-50 backdrop-blur-lg rounded-xl p-4 shadow-lg w-3/4 mx-auto">
                 <h2 className="text-purple-800 text-xl font-light mb-4 justify-centre">
@@ -299,40 +342,31 @@ export function Vto() {
                 </button>
               </div>
             </div>
-
             {/* Galleries Section */}
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white bg-opacity-50 backdrop-blur-lg rounded-xl p-6 shadow-lg">
                 <h2 className="text-purple-800 text-2xl font-light mb-4">
                   User Photos
-                </h2>{" "}
-                {/* Renamed section */}
+                </h2>
                 <div className="grid grid-cols-2 gap-4">
-                  {" "}
-                  {/* Retain only 2 image boxes */}
-                  {modelPhotos.slice(0, 2).map(
-                    (
-                      photo,
-                      index // Retain only model-1 and model-2
-                    ) => (
-                      <div
-                        key={`model-${index}`}
-                        className="bg-purple-200 rounded-lg p-2 cursor-pointer hover:bg-purple-300 transition duration-300"
-                        onClick={() => {
-                          setUserPhoto(photo.src);
-                          setSelectedModelIndex(index);
-                        }}
-                      >
-                        <Image
-                          src={photo.src}
-                          alt={photo.alt}
-                          width={1080}
-                          height={1080}
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    )
-                  )}
+                  {modelPhotos.slice(0, 2).map((photo, index) => (
+                    <div
+                      key={`model-${index}`}
+                      className="bg-purple-200 rounded-lg p-2 cursor-pointer hover:bg-purple-300 transition duration-300"
+                      onClick={() => {
+                        setUserPhoto(photo.src);
+                        setSelectedModelIndex(index);
+                      }}
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        width={1080}
+                        height={1080}
+                        className="rounded-lg object-cover"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="bg-white bg-opacity-50 backdrop-blur-lg rounded-xl p-6 shadow-lg">
@@ -340,37 +374,31 @@ export function Vto() {
                   Garment Photos
                 </h2>
                 <div className="grid grid-cols-2 gap-4">
-                  {" "}
-                  {/* 2 boxes in each row */}
-                  {garmentPhotos.slice(0, 4).map(
-                    (
-                      photo,
-                      index // Retain garment-1 to garment-4
-                    ) => (
-                      <div
-                        key={`garment-${index}`}
-                        className="bg-white rounded-lg p-2 cursor-pointer hover:bg-purple-100 transition duration-300"
-                        onClick={() => {
-                          setGarmentPhoto(photo.src);
-                          setSelectedGarmentIndex(index);
-                        }}
-                      >
-                        <Image
-                          src={photo.src}
-                          alt={photo.alt}
-                          width={1080}
-                          height={1080}
-                          className="rounded-lg object-cover"
-                        />
-                      </div>
-                    )
-                  )}
+                  {garmentPhotos.slice(0, 4).map((photo, index) => (
+                    <div
+                      key={`garment-${index}`}
+                      className="bg-white rounded-lg p-2 cursor-pointer hover:bg-purple-100 transition duration-300"
+                      onClick={() => {
+                        setGarmentPhoto(photo.src);
+                        setSelectedGarmentIndex(index);
+                      }}
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        width={1080}
+                        height={1080}
+                        className="rounded-lg object-cover"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </section>
-        {/* Footer Component */}
+
+        {/* Footer Component - Ensure this is only included once */}
         <ComponentsFooter />
       </main>
     </div>

@@ -60,7 +60,8 @@ export function VirtualTryPage() {
       }
 
       const data = await response.json();
-      setResultPhoto(data.result);
+      console.log(data);
+      setResultPhoto(data.output);
     } catch (error) {
       console.error("Error:", error);
       alert(`An error occurred: ${error.message}`);

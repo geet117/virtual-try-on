@@ -25,22 +25,39 @@ export function LandingPage() {
   return (
     <div className={`flex flex-col min-h-screen ${montserrat.className}`}>
       <main className={montserrat.className}>
-        <section className="bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-500 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-400 via-indigo-600 to-purple-600 opacity-30"></div>
-          <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-          <div className="container mx-auto px-4 text-center relative z-10">
-            <h1 className="text-5xl sm:text-6xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
-              CLICK. TRY. BUY.
-            </h1>
-            <p className="text-3xl mb-8 max-w-3xl mx-auto font-light">
-              Increase Conversions, Reduce Returns
-            </p>
-            <button
-              onClick={playVideo}
-              className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm text-white border border-white border-opacity-30 hover:bg-opacity-30 text-lg px-8 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              {isPlaying ? "Watch Again" : "See What's New"}
-            </button>
+        <section
+          className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex items-center" // Updated to use gradient background
+        >
+          <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
+          {/* Overlay for text visibility */}
+          <div className="container mx-auto flex items-center relative z-10">
+            <div className="flex-shrink-0">
+              {" "}
+              {/* Image container */}
+              <Image
+                src="/hero-banner-2.png"
+                alt="Hero Banner"
+                width={800}
+                height={600}
+                className="object-cover h-full" // Ensure the image covers the height
+              />
+            </div>
+            <div className="flex flex-col max-w-md ml-8">
+              {" "}
+              {/* Text container */}
+              <h1 className="text-5xl sm:text-6xl font-medium mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                CLICK. TRY. BUY.
+              </h1>
+              <p className="text-3xl mb-4 font-medium">
+                Increase Conversions, Reduce Returns
+              </p>
+              {/* <button
+                onClick={playVideo}
+                className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm text-white border border-white border-opacity-30 hover:bg-opacity-30 text-lg px-8 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                {isPlaying ? "Watch Again" : "See What's New"}
+              </button> */}
+            </div>
           </div>
         </section>
 
